@@ -1,0 +1,215 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light mode */
+    --background: 60 33% 98%; /* Ivory #FDFBF6 */
+    --foreground: 0 0% 5%; /* Rich Black #0D0D0D */
+
+    --card: 60 33% 98%; /* Ivory */
+    --card-foreground: 0 0% 5%; /* Rich Black */
+
+    --popover: 60 33% 98%; /* Ivory */
+    --popover-foreground: 0 0% 5%; /* Rich Black */
+
+    --primary: 0 0% 5%; /* Rich Black #0D0D0D */
+    --primary-foreground: 60 33% 98%; /* Ivory */
+
+    --secondary: 43 80% 52%; /* Gold #D4AF37 */
+    --secondary-foreground: 0 0% 5%; /* Rich Black */
+
+    --muted: 45 57% 88%; /* Light Champagne */
+    --muted-foreground: 0 0% 40%; /* Muted text */
+
+    --accent: 43 80% 52%; /* Gold #D4AF37 */
+    --accent-foreground: 0 0% 5%; /* Rich Black */
+
+    --destructive: 0 84.2% 60.2%; /* Default red */
+    --destructive-foreground: 60 33% 98%; /* Ivory */
+
+    --border: 45 57% 88%; /* Light Champagne */
+    --input: 45 57% 88%; /* Light Champagne */
+    --ring: 43 80% 52%; /* Gold */
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark mode - Updated with provided color palette */
+    --background: 230 20% 14%; /* Background: #1c1e2b */
+    --foreground: 60 33% 98%; /* Primary Text: #FDFBF6 */
+
+    --card: 230 20% 18%; /* Surface/Container: #232534 - slightly lighter than background */
+    --card-foreground: 60 33% 98%; /* Primary Text: #FDFBF6 */
+
+    --popover: 230 20% 18%; /* Surface/Container: #232534 */
+    --popover-foreground: 60 33% 98%; /* Primary Text: #FDFBF6 */
+
+    --primary: 43 80% 52%; /* Accent (Gold): #D4AF37 */
+    --primary-foreground: 0 0% 5%; /* Background: #0D0D0D */
+
+    --secondary: 60 33% 98%; /* Primary Text: #FDFBF6 */
+    --secondary-foreground: 0 0% 5%; /* Background: #0D0D0D */
+
+    --muted: 0 0% 17%; /* Slightly lighter than Surface: #2C2C2C */
+    --muted-foreground: 0 0% 70%; /* Secondary Text: #B3B3B3 */
+
+    --accent: 43 80% 52%; /* Accent (Gold): #D4AF37 */
+    --accent-foreground: 0 0% 5%; /* Background: #0D0D0D */
+
+    --destructive: 0 62.8% 30.6%; /* Alert/Highlight: #800020 */
+    --destructive-foreground: 60 33% 98%; /* Primary Text: #FDFBF6 */
+
+    --border: 0 0% 17%; /* Divider/Border: #2C2C2C */
+    --input: 0 0% 17%; /* Divider/Border: #2C2C2C */
+    --ring: 43 80% 52%; /* Accent (Gold): #D4AF37 */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-emerald text-white hover:bg-opacity-90;
+}
+
+.btn-secondary {
+  @apply bg-burgundy text-white hover:bg-opacity-90;
+}
+
+/* Custom styles for dark mode */
+.dark .bg-gray-100 {
+  @apply bg-darkbluegray bg-opacity-90;
+}
+
+.dark .bg-gray-50 {
+  @apply bg-darkbluegray;
+}
+
+.dark .text-gray-600 {
+  @apply text-champagne;
+}
+
+.dark .text-gray-900 {
+  @apply text-white;
+}
+
+.dark .border-gray-200 {
+  @apply border-gray-700;
+}
+
+/* Hero section dark mode override */
+.dark .from-gray-900 {
+  --tw-gradient-from: #0d0d0d;
+}
+
+.dark .to-gray-800 {
+  --tw-gradient-to: #1a1a1a;
+}
+
+/* Gold accents */
+.accent-gold {
+  @apply text-gold;
+}
+
+/* Custom card styles */
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-md hover:shadow-gold/20;
+}
+
+/* Form input focus styles */
+.form-input-focus {
+  @apply focus:border-gold focus:ring-1 focus:ring-gold;
+}
+
+/* Ripple animation for buttons */
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.animate-ripple {
+  animation: ripple 0.6s linear;
+  transform-origin: center;
+}
+
+/* Map container */
+.map-container {
+  @apply rounded-lg overflow-hidden border border-champagne/30 dark:border-gray-700;
+  height: 300px;
+}
+
+/* Contact form input styles */
+.contact-input {
+  @apply bg-champagne/10 border-champagne/30 dark:bg-darkbluegray/40 dark:border-gray-700 rounded-md transition-all duration-200;
+}
+
+.contact-input:focus {
+  @apply border-gold ring-1 ring-gold;
+}
+
+/* Contact card hover effect */
+.contact-card {
+  @apply transition-all duration-300;
+}
+
+.contact-card:hover {
+  @apply shadow-md shadow-gold/10 border-gold/30;
+}
+
+/* Icon container in contact cards */
+.icon-container {
+  @apply bg-champagne/20 dark:bg-darkbluegray/40 rounded-full p-3 transition-all duration-300;
+}
+
+.contact-card:hover .icon-container {
+  @apply bg-gold/20;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dark mode specific button styles */
+.dark .bg-emerald {
+  @apply bg-[#004D40]; /* CTA/Button: #004D40 */
+}
+
+.dark .hover\:bg-emerald\/90:hover {
+  @apply bg-[#00695C]; /* CTA Hover: #00695C */
+}
+
+/* Dark mode specific text colors */
+.dark .text-muted-foreground {
+  @apply text-[#B3B3B3]; /* Secondary Text: #B3B3B3 */
+}
+
+/* Dark mode specific border colors */
+.dark .border-champagne\/20,
+.dark .border-champagne\/30 {
+  @apply border-[#2C2C2C]; /* Divider/Border: #2C2C2C */
+}
+
+/* Dark mode specific background colors */
+.dark .bg-champagne\/20,
+.dark .bg-champagne\/30 {
+  @apply bg-[#1A1A1A]; /* Surface/Container: #1A1A1A */
+}
